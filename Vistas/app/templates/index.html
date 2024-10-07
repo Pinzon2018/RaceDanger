@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Inicio
+            
+        </title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link href="../static/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="#page-top">Winners</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">Ganadores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Registrar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Registros</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="bg-primary bg-gradient text-white">
+        </header>
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-center">Pilotos Ganadores</h2>
+                        <table class="table mt-5 text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Numero de avión</th>
+                                <th scope="col">Nombre del equipo</th>
+                                <th scope="col">Circuito Ganado</th>
+                                <th scope="col">Tiempo del Ganador</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Andres</td>
+                                <td>5433234</td>
+                                <td>TopGun</td>
+                                <td>CLean</td>
+                                <td>08:16:04</td>
+                              </tr>
+                              <tr>
+                                <td>Julian</td>
+                                <td>4223542</td>
+                                <td>Stelar</td>
+                                <td>Alter</td>
+                                <td>10:20:15</td>
+
+                              </tr>
+                              <tr>
+                                <td>Andrea</td>
+                                <td>1245234</td>
+                                <td>Magics</td>
+                                <td>Dead</td>
+                                <td>02:15:02</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-light" id="services">
+            <div class="container px-4">
+                <div class="row justify-content-center">
+                    <div class="col-3 text-center">
+                        <h3>Registar Piloto</h3>
+                        <a href="{{ url_for('user_bp.piloto') }}" class="btn btn-primary mt-4">Registrar</a>
+                    </div>
+                    <div class="col-3 text-center">
+                        <h3>Registrar Equipo</h3>
+                        <a href="{{ url_for('user_bp.equipo') }}" class="btn btn-primary mt-4">Registrar</a>
+                    </div>
+                    <div class="col-3 text-center">
+                        <h3>Registrar Circuito</h3>
+                        <a href="{{ url_for('user_bp.circuito') }}" class="btn btn-primary mt-4">Registrar</a>
+                    </div>
+                    <div class="col-3 text-center">
+                        <h3>Registar Aviones</h3>
+                        <a href="{{ url_for('user_bp.avion') }}" class="btn btn-primary mt-4">Registrar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center text-center">
+                    <div class="col-6">
+                        <h4>Pilotos Registrados</h4>
+                        <table class="table mt-5 text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Identificación</th>
+                                <th scope="col">Fecha Nacimiento</th>
+                                <th scope="col">Equipo</th>
+                                <th scope="col">Avion</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for contact in team_pilot %}
+                                  <tr>
+                                      <td> {{ contact.Nombre_Piloto }} </td>
+                                      <td> {{ contact.Num_Identificación }} </td>
+                                      <td> {{ contact.Fecha_Nacimiento }} </td>
+                                      <td> {{ contact.Nombre_Equipo }} </td>
+                                      <td> {{ contact.Nombre_Avion }} </td>
+                                  </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="col-6">
+                        <h4>Equipos Registrados</h4>
+                        <table class="table mt-5 text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Nombre Equipo</th>
+                                <th scope="col">Personas en el equipo</th>
+                                <th scope="col">Numero de mecanicos</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for equipo in team %}
+                                <tr>
+                                  <td> {{equipo.Nombre_Equipo}} </td>
+                                  <td> {{equipo.Personas_Equipo}} </td>
+                                  <td> {{equipo.Mecanicos_Equipo}} </td>
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container px-4 mt-5 text-center">
+                <div class="row  justify-content-center">
+                    <div class="col-6">
+                        <h4>Circuitos registrados</h4>
+                        <table class="table mt-5 text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Nombre del circuito</th>
+                                <th scope="col">Participantes</th>
+                                <th scope="col">Km del circuito</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for carrera in race %}
+                                <tr>
+                                  <td> {{carrera.Nombre_Circuito}} </td>
+                                  <td> {{carrera.Cantidad_Max_Participantes}} </td>
+                                  <td> {{carrera.Km_Circuito}} </td>
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="col-6">
+                        <h4>Aviones Registrados</h4>
+                        <table class="table mt-5 text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">Nombre del avion</th>
+                                <th scope="col">Numero del avion</th>
+                                <th scope="col">Cantidad de asientos</th>
+                                <th scope="col">Kms recorridos</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for plane in planes %}
+                                <tr>
+                                  <td> {{plane.Nombre_Avion}} </td>
+                                  <td> {{plane.Numero_Avion}} </td>
+                                  <td> {{plane.Cantidad_Asientos}} </td>
+                                  <td> {{plane.Km_Recorridos}} </td>
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="py-5 bg-dark">
+            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/scripts.js"></script>
+    </body>
+</html>
